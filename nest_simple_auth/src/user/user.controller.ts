@@ -9,15 +9,6 @@ export class UserController {
 
   @Put("register")
   async register(@Body() body: Prisma.UserCreateInput) {
-    try {
-      return await this.userService.createUser(body)
-    }
-    catch (e) {
-      Logger.error(e);
-      if (e instanceof PrismaClientKnownRequestError) {
-        if (e.code == "P2002")
-          throw new HttpException(`Email address is already in use!`, 409);
-      }
-    }
+    return this.userService.createUser(body)
   }
 }

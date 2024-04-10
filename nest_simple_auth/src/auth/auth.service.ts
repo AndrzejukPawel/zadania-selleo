@@ -71,7 +71,6 @@ export class AuthService {
   async validateAuthenticationToken(token: string): Promise<TokenValidationresult> {
     const tokenString = jwt.decode(token) as { email: string, iat: number, exp: number };
     if (!tokenString) {
-      console.log("kek1");
       return invalidToken;
     }
 
@@ -89,7 +88,6 @@ export class AuthService {
     });
 
     if (!user || user.bearerToken != token) {
-      console.log("kek");
       return invalidToken;
     }
 

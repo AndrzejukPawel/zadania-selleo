@@ -1,8 +1,9 @@
 
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { User, Prisma } from '@prisma/client';
 import { passwordHash } from '../utils/hashutils';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class UserService {
@@ -33,18 +34,31 @@ export class UserService {
     });
   }
 
-  async createUser(data: Prisma.UserCreateInput): Promise<User> {
+  async createUser(data: Prisma.UserCreateInput): Promise<void> {
     if (!this.emailRequirementsMet(data.email)) {
       throw new HttpException("Invalid email address!", 422);
     }
+
     if (!this.passwordRequirementsMet(data.password)) {
       throw new HttpException("Invalid password, must contain minimum eight characters, at least one letter, one number and one special character", 422);
     }
+
     data.password = passwordHash(data.password);
 
-    return this.prisma.user.create({
-      data,
-    });
+    try {
+      await this.prisma.user.create({
+        data,
+      });
+      return;
+    }
+    catch (e) {
+      Logger.error(e);
+      if (e instanceof PrismaClientKnownRequestError) {
+        if (e.code == "P2002")
+          throw new HttpException(`Email address is already in use!`, 409);
+      }
+    }
+    throw new InternalServerErrorException();
   }
 
   async updateUser(params: {
