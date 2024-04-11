@@ -1,6 +1,6 @@
 Storage API
 ===
-
+It is a solution for task described in storage.md<br>
 Allows to perform basic operations on directories and files in the directory specified in the `.env` file
 
 Setup and Running 
