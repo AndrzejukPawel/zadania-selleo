@@ -100,7 +100,7 @@ Endpoints
 
 > | name      |  type     | data type | description                     |
 > |-----------|-----------|-----------|---------------------------------|
-> | path      | required  | string    | relative path to the file       |
+> | path      | required  | string    | path to the file                |
 
 ##### Responses
 
@@ -133,7 +133,7 @@ Endpoints
 
 > | name      |  type     | data type | description                     |
 > |-----------|-----------|-----------|---------------------------------|
-> | path      |  required | string    | relative path to the file       |
+> | path      |  required | string    | path to the file                |
 
 ##### Responses
 
