@@ -58,7 +58,6 @@ export class UserService {
           throw new HttpException(`Email address is already in use!`, 409);
       }
     }
-    throw new InternalServerErrorException();
   }
 
   async updateUser(params: {

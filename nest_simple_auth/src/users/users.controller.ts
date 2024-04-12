@@ -1,6 +1,6 @@
 import { Controller, Get, Headers, HttpException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Controller("users")
 export class UsersController {

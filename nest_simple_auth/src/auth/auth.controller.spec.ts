@@ -29,7 +29,7 @@ describe('AuthController', () => {
     expect(controller).toBeDefined();
   });
 
-  describe('signIn', () => {
+  describe('/auth/signIn', () => {
     const userCredentials = { email: 'dummy', password: 'dummy' };
 
     test('for valid credentials returns valid token with email, iat, exp', async () => {

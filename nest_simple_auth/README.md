@@ -23,7 +23,7 @@ All data is saved in sqlite database located in `./prisma/database.db`
 
 #### Creating user account
 <details>
- <summary><code>PUT <b>/</b>user<b>/</b>register</code></summary>
+ <summary><code>POST <b>/</b>user<b>/</b>register</code></summary>
 
 ##### Body Parameters
 
@@ -40,7 +40,7 @@ All data is saved in sqlite database located in `./prisma/database.db`
 ##### Example cURL creating `/abc/file.txt` file with `Hello world!` text
 
 > ```javascript
->  curl -X PUT -H "Content-Type: application/json" localhost:3000/user/register -d "{\"email\": \"test5@test.test\",\"password\": \"TestTest1!\",\"firstName\": \"test\",\"lastName\": \"test\",\"phoneNumber\": \"test\",\"shirtSize\": \"test\",\"preferredTechnology\": \"test\"}"
+>  curl -X POST -H "Content-Type: application/json" localhost:3000/user/register -d "{\"email\": \"test5@test.test\",\"password\": \"TestTest1!\",\"firstName\": \"test\",\"lastName\": \"test\",\"phoneNumber\": \"test\",\"shirtSize\": \"test\",\"preferredTechnology\": \"test\"}"
 > ```
 
 </details>
@@ -69,7 +69,7 @@ An object containing bearer token
 
 #### Fetching list of all registered users
 <details>
- <summary><code>PUT <b>/</b>users</code></summary>
+ <summary><code>GET <b>/</b>users</code></summary>
 
 ### ! Requires `Authorization` header with a valid bearer token
 
