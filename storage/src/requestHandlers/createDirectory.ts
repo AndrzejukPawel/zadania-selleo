@@ -1,7 +1,5 @@
-import { RequestHandler } from 'express';
 import { HttpMethod, IRequest } from '../IRequest';
-import { ParamsDictionary, Request, Response } from 'express-serve-static-core';
-import { ParsedQs } from 'qs';
+import { Request, Response } from 'express-serve-static-core';
 import * as nodePath from 'path'
 import * as fs from 'fs';
 
@@ -10,7 +8,7 @@ export class CreateDirectoryBody {
 }
 
 export class CreateDirectory implements IRequest {
-  httpMethod: HttpMethod = 'put';
+  httpMethod: HttpMethod = 'post';
   path: string = '/create_directory';
 
   handler(req: Request, res: Response) {
@@ -37,6 +35,6 @@ export class CreateDirectory implements IRequest {
       }
     });
 
-    res.sendStatus(200);
+    res.sendStatus(201);
   }
 }

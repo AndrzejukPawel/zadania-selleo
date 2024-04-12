@@ -1,7 +1,5 @@
-import { RequestHandler } from 'express';
 import { HttpMethod, IRequest } from '../IRequest';
-import { ParamsDictionary, Request, Response } from 'express-serve-static-core';
-import { ParsedQs } from 'qs';
+import { Request, Response } from 'express-serve-static-core';
 import * as nodePath from 'path'
 import * as fs from 'fs';
 

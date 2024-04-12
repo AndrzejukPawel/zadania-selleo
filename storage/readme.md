@@ -22,7 +22,7 @@ Endpoints
 
 #### Creating file
 <details>
- <summary><code>PUT <b>/</b>create_file</code></summary>
+ <summary><code>POST <b>/</b>create_file</code></summary>
 
 ##### Body Parameters
 
@@ -51,7 +51,7 @@ Endpoints
 
 > | http code | reason                                                                                |
 > |-----------|---------------------------------------------------------------------------------------|
-> | `200`     | File created successfully                                                             | 
+> | `201`     | File created successfully                                                             | 
 > | `400`     | One or more parameters missing                                                        |
 > | `403`     | Trying to create file in `/admin` (sub)directory without role header set to `admin`   |
 > | `404`     | Directory doesn't exist                                                               | 
@@ -60,14 +60,14 @@ Endpoints
 ##### Example cURL creating `/abc/file.txt` file with `Hello world!` text
 
 > ```javascript
->  curl -X PUT -H "Content-Type: application/json" localhost:3000/create_file -d "{\"path\":\"/abc/file.txt\",\"encoding\":\"utf8\",\"content\":\"Hello world!\"}"
+>  curl -X POST -H "Content-Type: application/json" localhost:3000/create_file -d "{\"path\":\"/abc/file.txt\",\"encoding\":\"utf8\",\"content\":\"Hello world!\"}"
 > ```
 
 </details>
 
 #### Creating directory
 <details>
- <summary><code>PUT <b>/</b>create_directory</code></summary>
+ <summary><code>POST <b>/</b>create_directory</code></summary>
 
 ##### Body Parameters
 
@@ -79,7 +79,7 @@ Endpoints
 
 > | http code | reason                                                                                    |
 > |-----------|-------------------------------------------------------------------------------------------|
-> | `200`     | Directory created successfully                                                            | 
+> | `201`     | Directory created successfully                                                            | 
 > | `400`     | path parameter missing                                                                    |
 > | `403`     | Trying to create directory in `/admin` (sub)directory without role header set to `admin`  |
 > | `409`     | Directory already exists                                                                  | 
@@ -87,7 +87,7 @@ Endpoints
 ##### Example cURL creating `/abc/file.txt` file with `Hello world!` text
 
 > ```javascript
->  curl -X PUT -H "Content-Type: application/json" localhost:3000/create_directory -d "{\"path\":\"/abc/qwe\"}"
+>  curl -X POST -H "Content-Type: application/json" localhost:3000/create_directory -d "{\"path\":\"/abc/qwe\"}"
 > ```
 
 </details>

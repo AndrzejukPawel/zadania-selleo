@@ -1,7 +1,5 @@
-import { RequestHandler } from 'express';
 import { HttpMethod, IRequest } from '../IRequest';
-import { ParamsDictionary, Request, Response } from 'express-serve-static-core';
-import { ParsedQs } from 'qs';
+import { Request, Response } from 'express-serve-static-core';
 import * as nodePath from 'path'
 import * as fs from 'fs';
 
@@ -12,7 +10,7 @@ export class CreateFileBody {
 }
 
 export class CreateFile implements IRequest {
-  httpMethod: HttpMethod = 'put';
+  httpMethod: HttpMethod = 'post';
   path: string = '/create_file';
 
   handler(req: Request, res: Response) {
@@ -37,6 +35,6 @@ export class CreateFile implements IRequest {
     }
 
     fs.writeFileSync(filePath, content, { encoding });
-    return res.sendStatus(200);
+    return res.sendStatus(201);
   }
 }
