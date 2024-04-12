@@ -7,6 +7,7 @@ import { CreateFile } from './requestHandlers/createFile';
 import { ReadDirectory } from './requestHandlers/readDirectory';
 import { ReadFile } from './requestHandlers/readFile';
 import { Move } from './requestHandlers/move';
+import { Delete } from './requestHandlers/delete';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ const requests: IRequest[] = [
   new ReadDirectory(),
   new ReadFile(),
   new Move(),
+  new Delete(),
 ];
 console.log(`Registering requests:`)
 requests.forEach((reqDef) => {

@@ -176,7 +176,7 @@ Endpoints
 > | `200`     | File/directory renamed successfully                                                   | 
 > | `400`     | fromPath and/or toPath parameter is missing                                           |
 > | `403`     | Trying to rename directory `/admin` or its content without role header set to `admin` |
-> | `404`     | File/directory specified in fromPath parameter doesn't                                | 
+> | `404`     | File/directory specified in fromPath parameter doesn't exist                          | 
 > | `409`     | File/directory specified in toPath parameter already exists                           | 
 
 ##### Example cURL renaming folder `/abc/qwe` to `/abc/ewq`
@@ -189,6 +189,40 @@ Endpoints
 
 > ```javascript
 >  curl -X POST -H "Content-Type: application/json" localhost:3000/move -d "{\"fromPath\":\"/abc/qwe/file.txt\",\"toPath\":\"/file.txt\"}"
+> ```
+
+</details>
+
+#### Deleting directory or file
+<details>
+ <summary><code>DELETE <b>/</b>move</code></summary>
+
+##### Body Parameters
+
+> | name      |  type     | data type | description                     |
+> |-----------|-----------|-----------|---------------------------------|
+> | fromPath  |  required | string    | file/directory to rename        |
+> | toPath    |  required | string    | new name of the file/directory  |
+
+##### Responses
+
+> | http code | reason                                                                                |
+> |-----------|---------------------------------------------------------------------------------------|
+> | `200`     | File/directory deleted successfully                                                   | 
+> | `400`     | path parameter is missing                                                             |
+> | `403`     | Trying to remove directory `/admin` or its content without role header set to `admin` |
+> | `404`     | File/directory specified in path parameter doesn't exist                              |
+
+##### Example cURL removing folder `/abc/qwe`
+
+> ```javascript
+>  curl -X DELETE -H "Content-Type: application/json" localhost:3000/delete -d "{\"path\":\"/abc/qwe\"}"
+> ```
+
+##### Example cURL removing file `/abc/qwe/file.txt`
+
+> ```javascript
+>  curl -X DELETE -H "Content-Type: application/json" localhost:3000/delete -d "{\"path\":\"/abc/qwe/file.txt\"}"
 > ```
 
 </details>
