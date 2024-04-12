@@ -201,8 +201,7 @@ Endpoints
 
 > | name      |  type     | data type | description                     |
 > |-----------|-----------|-----------|---------------------------------|
-> | fromPath  |  required | string    | file/directory to rename        |
-> | toPath    |  required | string    | new name of the file/directory  |
+> | path      |  required | string    | file/directory to remove        |
 
 ##### Responses
 
